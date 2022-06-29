@@ -1,0 +1,2 @@
+// just a thought: maybe we postpone the reactions until we have the rest of it figured out? 
+// for example maybe we can figure out the google api and make that look good before adding something easy but still time consuming like this
