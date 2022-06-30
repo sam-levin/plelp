@@ -25,7 +25,7 @@ const userSchema = new Schema({
       required: true,
       minlength: 5
     },
-    posts: [Post.Schema]
+    posts: [Post.schema]
 });
 
 userSchema.pre('save', async function(next) {
