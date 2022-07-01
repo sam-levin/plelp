@@ -1,4 +1,4 @@
-const { User, City, Reply, Post } = require('../models')
+const { User, City, Reply, Post, Location } = require('../models')
 
 const resolvers = {
     Query: {
@@ -13,7 +13,7 @@ const resolvers = {
   
         throw new AuthenticationError('Not logged in');
       },
-      
+
       // find all users
       users: async () => {
         return User.find()
