@@ -24,7 +24,7 @@ const postSchema = new Schema ({
         get: (createdAtVal) => moment(createdAtVal).format('MMM DD, YYYY [at] hh:mm a')
      },
      
-     reply: [replySchema]
+     replys: [replySchema]
 
 })
 

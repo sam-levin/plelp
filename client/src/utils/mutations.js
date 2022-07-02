@@ -37,7 +37,7 @@ addPost(description: $description){
 
 export const ADD_REPLY = gql`
 mutation addReply($descriptionId: ID!, $replyBody: String!)
-postReply(descriptionId: $descriptionId, replyBody: $replyBody)
+addReply(descriptionId: $descriptionId, replyBody: $replyBody)
 _id
 reply {
 _id
