@@ -6,7 +6,12 @@ const locationSchema = new Schema ({
          type: String,
          required: true
      },
-     posts:[postSchema],
+     posts:[
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Post'
+        }
+     ],
 })
 
 
