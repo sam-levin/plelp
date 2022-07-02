@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-
+const Post = require('./Post')
 
 const userSchema = new Schema (
     {
@@ -13,8 +13,11 @@ const userSchema = new Schema (
         password: {
           type: String,
           required: true,
-        }
-    },
+        },
+        posts: [
+          Post.schema
+        ]
+      },
     {
         toJSON: {
           virtuals: true,

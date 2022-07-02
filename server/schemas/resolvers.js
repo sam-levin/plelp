@@ -19,15 +19,12 @@ const resolvers = {
         return User.find()
           .select('-__v -password')
           .populate('posts')
-          .populate('friends');
       },
 
       // finding user details with username
       user: async (parent, { username }) => {
         return User.findOne({ username })
           .select('-__v -password')
-          .populate('friends')
-          .populate('thoughts');
       },
       
       // finding posts by username
@@ -43,10 +40,18 @@ const resolvers = {
       },
 
       // get all locations for a city
-      locations: async (parent, {city}) => {
-        const params =  city ? { city } : {}
-        return Location.find(params).sort({createdAt: -1 });
+      // locations: async (parent, {city}) => {
+      //   const params =  city ? { city } : {}
+      //   return Location.find(params).sort({createdAt: -1 });
+      // },
+
+      cities: async() => {
+        return City.find()
+          .select('-__v')
       }
     },
 
 }
+ 
+
+module.exports = resolvers;

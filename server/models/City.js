@@ -4,7 +4,7 @@ const { Schema, model } = require('mongoose');
 
 const citySchema = new Schema (
     {
-        cityname: {
+        name: {
             type:String   
         },
         posts: [{
