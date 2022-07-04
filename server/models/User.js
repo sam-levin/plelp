@@ -1,10 +1,10 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-
+const Post = require('./Post')
 
 const userSchema = new Schema (
     {
-    username: {
+       username: {
             type: String,
             required: true,
             unique: true,
@@ -19,12 +19,9 @@ const userSchema = new Schema (
           required: true,
         },
         posts: [
-            {
-              type: Schema.Types.ObjectId,
-              ref: 'Post'
-            }
-         ],
-    },
+          Post.schema
+        ]
+      },
     {
         toJSON: {
           virtuals: true,
