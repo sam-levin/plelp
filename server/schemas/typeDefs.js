@@ -7,35 +7,29 @@ type User {
   email: String
   posts: [Post]
 }
-
 type Post {
   _id: ID
-  postText: String
+  description: String
   createdAt: String
   username: String
   replyCount: Int
   reply: [Reply]
 }
-
 type Reply {
   _id: ID
   replyBody: String
   createdAt: String
   username: String
-  post: Post
 }
-
 type City {
   _id: ID
   posts: [Post]
   name: String
 }
-
 type Auth {
   token: ID!
   user: User
 }
-
 type Query {
   me: User
   users: [User]
