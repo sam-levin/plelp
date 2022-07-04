@@ -22,6 +22,7 @@ type Reply {
   replyBody: String
   createdAt: String
   username: String
+  post: Post
 }
 
 type City {
