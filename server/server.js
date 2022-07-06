@@ -3,6 +3,7 @@
 const express = require ('express')
 const { ApolloServer } = require('apollo-server-express')
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 
@@ -10,6 +11,8 @@ const { ApolloServer } = require('apollo-server-express')
 const {authMiddleware} = require('./utils/auth');
 >>>>>>> feature/schemas
 >>>>>>> bdaf5ea175cce9deabc5860550c6412320ad6d7b
+=======
+>>>>>>> feature/testing
 const {typeDefs, resolvers} = require('./schemas')
 const db = require('./config/connection')
 
@@ -17,16 +20,8 @@ const PORT = process.env.PORT || 3001;
 
 const server = new ApolloServer({
     typeDefs,
-<<<<<<< HEAD
-    resolvers
-=======
     resolvers,
-<<<<<<< HEAD
-//    context: authMiddleware,
-=======
     context: authMiddleware,
->>>>>>> feature/schemas
->>>>>>> bdaf5ea175cce9deabc5860550c6412320ad6d7b
 })
 
 const app = express();

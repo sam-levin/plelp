@@ -1,22 +1,35 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_THOUGHT = gql`
-  query thought($id: ID!) {
-    thought(_id: $id) {
+export const QUERY_POST = gql`
+  query post($id: ID!) {
+    post(_id: $id) {
       _id
-      thoughtText
+      postText
       createdAt
       username
-      reactionCount
-      reactions {
+      replyCount
+      replies {
         _id
         createdAt
         username
-        reactionBody
+        replyBody
       }
     }
   }
 `;
+
+export const QUERY_POSTS = gql`
+  query allPosts($city: String!) {
+    city(name: $city) {
+      post{
+        postText
+        createdAt
+        replyCount
+        username
+      }
+    }
+  }
+`
 
 export const QUERY_USER = gql`
   query user($username: String!) {
@@ -29,12 +42,24 @@ export const QUERY_USER = gql`
         _id
         username
       }
-      thoughts {
+      post {
         _id
-        thoughtText
+        postText
         createdAt
-        reactionCount
+        replyCount
       }
     }
   }
 `;
+
+export const QUERY_LOCATIONS = gql`
+  query locations($city: String!) {
+    location(city: $city) {
+      content
+      post{
+        title
+        username
+      }
+    }
+  }
+`

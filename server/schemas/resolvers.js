@@ -31,6 +31,11 @@ const resolvers = {
           .populate('posts');
       },
       
+      allPosts: async (parents, {city}) => {
+        const params = city ? {city} : {};
+        return Post.find(params).sort({createdAt: -1})
+      },
+
       // finding posts by username
       posts: async (parent, { username }) => {
         const params = username ? { username } : {};
@@ -44,10 +49,10 @@ const resolvers = {
       },
 
       // get all locations for a city
-      // locations: async (parent, {city}) => {
-      //   const params =  city ? { city } : {}
-      //   return Location.find(params).sort({createdAt: -1 });
-      // },
+      locations: async (parent, {city}) => {
+        const params =  city ? { city } : {}
+        return Location.find(params).sort({createdAt: -1 });
+      },
 
       cities: async() => {
         return City.find()

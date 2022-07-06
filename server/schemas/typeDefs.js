@@ -36,6 +36,7 @@ type Query {
   user(username: String!): User
   posts(username: String): [Post]
   post(_id: ID!): Post
+  allPosts: [Post]
   cities: [City]
   city(name: String!): City
 }
