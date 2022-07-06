@@ -37,6 +37,11 @@ db.once('open', async () => {
         }
   )
 
+    const posts = await Post.insertMany([
+        {
+            
+        }
+    ])
 
     console.log('users seeded')
 

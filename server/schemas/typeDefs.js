@@ -39,6 +39,7 @@ type Query {
   allPosts: [Post]
   cities: [City]
   city(name: String!): City
+  locations: String!
 }
 
 type Mutation {
