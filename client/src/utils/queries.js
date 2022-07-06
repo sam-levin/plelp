@@ -18,6 +18,7 @@ export const QUERY_POST = gql`
   }
 `;
 
+// this gets all posts from a city
 export const QUERY_POSTS = gql`
   query allPosts($city: String!) {
     city(name: $city) {
