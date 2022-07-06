@@ -45,11 +45,7 @@ type Mutation {
   login(email: String!, password: String!): Auth
   addUser(username: String!, email: String!, password: String!): Auth
   addPost(postText: String!): Post
-<<<<<<< HEAD
   addReply(postId: ID!, replyBody: String!): Post
-=======
-  addReply(postId: ID!, reactionBody: String!): Post
->>>>>>> bdaf5ea175cce9deabc5860550c6412320ad6d7b
 }
 `;
 
