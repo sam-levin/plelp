@@ -7,16 +7,16 @@ const userSchema = new Schema (
        username: {
             type: String,
             required: true,
-            unique: true,
+            unique: true
           },
         email: {
           type: String,
           required: true,
-          unique: true,
+          unique: true
         },
         password: {
           type: String,
-          required: true,
+          required: true
         },
         posts: [
           Post.schema
@@ -24,7 +24,7 @@ const userSchema = new Schema (
       },
     {
         toJSON: {
-          virtuals: true,
+          virtuals: true
         },
       }
 )

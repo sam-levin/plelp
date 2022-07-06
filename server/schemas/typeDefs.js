@@ -9,11 +9,11 @@ type User {
 }
 type Post {
   _id: ID
-  description: String
+  postText: String
   createdAt: String
   username: String
   replyCount: Int
-  reply: [Reply]
+  replies: [Reply]
 }
 type Reply {
   _id: ID
@@ -42,8 +42,8 @@ type Query {
 type Mutation {
   login(email: String!, password: String!): Auth
   addUser(username: String!, email: String!, password: String!): Auth
-  addPost(description: String!): Post
-  addReply(descriptionId: ID!, reactionBody: String!): Post
+  addPost(postText: String!): Post
+  addReply(postId: ID!, replyBody: String!): Post
 }
 `;
 

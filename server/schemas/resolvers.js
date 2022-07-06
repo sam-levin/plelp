@@ -1,4 +1,5 @@
-const { User, City, Post } = require('../models');
+const User = require('../models/User');
+const Post = require('../models/Post');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -27,6 +28,7 @@ const resolvers = {
       user: async (parent, { username }) => {
         return User.findOne({ username })
           .select('-__v -password')
+          .populate('posts');
       },
       
       // finding posts by username
@@ -37,8 +39,8 @@ const resolvers = {
 
       // finding post information by id
       post: async (parent, { _id }) => {
-        return Post.findOne({ _id })
-            .populate('replies');
+        return Post.findOne({ _id });
+           
       },
 
       // get all locations for a city
@@ -87,25 +89,25 @@ const resolvers = {
         
                 return post;
           }
-          //throw new AuthenticationError('You need to be logged in!');
+          throw new AuthenticationError('You need to be logged in!');
   
       },
       addReply: async (parent, { descriptionId, replyBody }, context) => {
           if (context.user) {
             const updatedPost = await Post.findOneAndUpdate(
               { _id: descriptionId },
-              { $push: { replys: { replyBody, username: context.user.username } } },
+              { $push: { replies: { replyBody, username: context.user.username } } },
               { new: true, runValidators: true }
             );
     
             return updatedPost;
           }
     
-         // throw new AuthenticationError('You need to be logged in!');
+          throw new AuthenticationError('You need to be logged in!');
         },
   }
 
-}
+};
  
 
 module.exports = resolvers;

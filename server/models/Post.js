@@ -3,9 +3,11 @@ const replySchema = require ("./Reply");
 
 
 const postSchema = new Schema ({
-    description: {
+    postText: {
         type: String,
-        required: true
+        required: true,
+        minlength: 1,
+        maxlength: 280
     },
 
     username:{
@@ -24,9 +26,20 @@ const postSchema = new Schema ({
         get: (createdAtVal) => moment(createdAtVal).format('MMM DD, YYYY [at] hh:mm a')
      },
      
-     replys: [replySchema]
+     replies: [replySchema]
 
-})
+    },  
+    {
+    toJSON: {
+      getters: true
+    }
+  }
+);
+
+postSchema.virtual('replyCount').get(function() {
+    return this.replies.length;
+  });
+  
 
 
 const Post = model('Post', postSchema);
