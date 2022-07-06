@@ -29,7 +29,7 @@ const resolvers = {
           .select('-__v -password')
       },
       
-      allposts: async (parents, {city}) => {
+      allPosts: async (parents, {city}) => {
         const params = city ? {city} : {};
         return Post.find(params).sort({createdAt: -1})
       },
