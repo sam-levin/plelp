@@ -16,34 +16,48 @@ db.once('open', async () => {
 
     await User.deleteMany();
 
-  await User.create(
+    const users = await User.insertMany([
         {
             email: 'sam@gmail.com',
             password: 'password',
-            posts: []
-        })
-
-  await User.create(
+            posts: [],
+            username: 'sam'
+        },
         {
             email: 'tammam@gmail.com',
             password: 'password1',
-            posts: []
-        })
-  await User.create(
+            posts: [],
+            username: 'tam'
+        },
         {
             email: 'saul@gmail.com',
             password: 'password2',
-            posts: []
-        }
-  )
-
-    const posts = await Post.insertMany([
-        {
-            
+            posts: [],
+            username: 'saul'
         }
     ])
 
+    console.log(users[1])
     console.log('users seeded')
+
+    const posts = await Post.insertMany([
+        {
+            city: cities[1],
+            username: users[0].username,
+            title: 'Test 1',
+            postText: 'testing',
+            replies: []
+        },
+        {
+            city: cities[0],
+            username: users[0].username,
+            title: 'Test 1',
+            postText: 'testing',
+            replies: []
+        }
+    ])
+
+   console.log('posts seeded')
 
     process.exit();
 })

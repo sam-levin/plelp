@@ -9,6 +9,7 @@ type User {
 }
 type Post {
   _id: ID
+  city: City
   postText: String
   createdAt: String
   username: String
