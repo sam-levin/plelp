@@ -1,6 +1,6 @@
 import React from 'react';
 
-function CityPost() {
+function CityPost(props) {
     return (
         <section>
              <div className="cityPost">

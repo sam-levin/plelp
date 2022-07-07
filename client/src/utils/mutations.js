@@ -32,7 +32,7 @@ mutation login($email: String!, $password: String!) {
 
 export const ADD_POST = gql`
 mutation addPost(postText: String!)
-addPost(postText: $postText){
+ addPost(postText: $postText){
     _id
     postText
     username
