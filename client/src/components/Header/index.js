@@ -15,12 +15,18 @@ const Header = () => {
 
         {Auth.loggedIn() ? (
           <>
-            <Link to="/">Cities</Link>
+            <Link to="/">
+              <a>Cities</a>
+            </Link>
           </>
         ) : (
           <>
-            <Link to="/login">Log In</Link>
-            <Link to="/signup">Sign Up</Link>
+            <Link to="/login">
+              <p>Log In</p>
+            </Link>
+            <Link to="/signup">
+              <p>Sign Up</p>
+            </Link>
           </>
         )}
       </nav>
