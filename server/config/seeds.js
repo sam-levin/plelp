@@ -5,11 +5,11 @@ db.once('open', async () => {
     await City.deleteMany();
 
     const cities = await City.insertMany([
-        { name: 'San Francisco' },
-        { name: 'Sacramento' },
-        { name: 'Seattle' },
-        { name: 'New York' },
-        { name: 'Santa Cruz' },
+        { cityName: 'San Francisco' },
+        { cityName: 'Sacramento' },
+        { cityName: 'Seattle' },
+        { cityName: 'New York' },
+        { cityName: 'Santa Cruz' },
     ]);  
 
     console.log('Cities seeded')
@@ -36,27 +36,29 @@ db.once('open', async () => {
             username: 'saul'
         }
     ])
-
+    console.log(cities)
     console.log(users[1])
     console.log('users seeded')
+    await Post.deleteMany();
 
     const posts = await Post.insertMany([
         {
             city: cities[1],
             username: users[0].username,
             title: 'Test 1',
-            postText: 'testing',
+            postText: 'This is a new post text',
             replies: []
         },
         {
             city: cities[0],
             username: users[0].username,
-            title: 'Test 1',
-            postText: 'testing',
+            title: 'Test 2',
+            postText: 'This is a secondary post text',
             replies: []
         }
     ])
 
+    console.log(posts[1])
    console.log('posts seeded')
 
     process.exit();

@@ -19,18 +19,30 @@ export const QUERY_POST = gql`
 `;
 
 // this gets all posts from a city
-export const QUERY_POSTS = gql`
-  query allPosts($city: String!) {
-    city(name: $city) {
-      post{
-        postText
-        createdAt
-        replyCount
-        username
+// export const QUERY_POSTS = gql`
+//   query allPosts($city: String!) {
+//     city(cityName: $cityName) {
+//       posts{
+//         postText
+//         createdAt
+//         replyCount
+//         username
+//       }
+//     }
+//   }
+// `;
+
+ export const QUERY_POSTS = gql`
+  query allPosts($cityName: String!) {
+    city(cityName: $cityName){
+        post{
+          _id
+        }
       }
     }
-  }
-`
+ `
+
+
 
 export const QUERY_USER = gql`
   query user($username: String!) {
