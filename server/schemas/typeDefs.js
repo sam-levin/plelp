@@ -24,7 +24,7 @@ type Reply {
 type City {
   _id: ID
   posts: [Post]
-  name: String
+  cityname: String
 }
 type Auth {
   token: ID!
@@ -37,7 +37,7 @@ type Query {
   posts(username: String): [Post]
   post(_id: ID!): Post
   cities: [City]
-  city(name: String!): City
+  city(cityname: String!): City
 }
 type Mutation {
   login(email: String!, password: String!): Auth

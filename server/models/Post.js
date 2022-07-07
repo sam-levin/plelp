@@ -3,7 +3,11 @@ const replySchema = require ("./Reply");
 
 
 const postSchema = new Schema ({
-    postText: {
+  title: {
+    type: String,
+    required: true
+},  
+  postText: {
         type: String,
         required: true,
         minlength: 1,
@@ -14,11 +18,6 @@ const postSchema = new Schema ({
         type: String,
         required: true
     },
-
-    title: {
-         type: String,
-         required: true
-     },
 
      createdAt: {
         type: Date,
