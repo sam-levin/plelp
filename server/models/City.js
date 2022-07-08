@@ -1,15 +1,22 @@
-const { Schema, model } = require('mongoose');
-const Location = require ("./Location");
+const mongoose = require('mongoose')
 const Post = require('./Post')
+const { Schema, model } = require('mongoose');
+
 const citySchema = new Schema (
     {
-        cityname: {
+        cityName: {
             type:String   
         },
         posts: [
-            Post.schema],
+            Post.schema
+        ],
 
-        locations: [Location.schema]
+        locations: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Location'
+            }
+        ]
     }
 )
 const City = model('City', citySchema);

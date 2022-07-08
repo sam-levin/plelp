@@ -1,59 +1,65 @@
 const db = require('./connection');
-const City = require('../models/City');
-const User = require('../models/User');
-const Post = require('../models/Post');
-
+const { City, Location, Post, Reply, User } = require('../models')
 
 db.once('open', async () => {
-await City.deleteMany();
+    await City.deleteMany();
 
-const cities = await City.create([
-        { cityname: 'San Francisco'},
-        { cityname: 'Sacramento' },
-        { cityname: 'Seattle' },
-        { cityname: 'New York'},
-        { cityname: 'Santa Cruz'} 
-       
-]);  
+    const cities = await City.insertMany([
+        { cityName: 'San Francisco' },
+        { cityName: 'Sacramento' },
+        { cityName: 'Seattle' },
+        { cityName: 'New York' },
+        { cityName: 'Santa Cruz' },
+    ]);  
 
-console.log('Cities seeded')
+    console.log('Cities seeded')
 
-await User.deleteMany();
+    await User.deleteMany();
 
-  await User.create(
+    const users = await User.insertMany([
         {
             email: 'sam@gmail.com',
             password: 'password',
-            username: 'user1',
-            posts: []
-        })
-
-  await User.create(
+            posts: [],
+            username: 'sam'
+        },
         {
             email: 'tammam@gmail.com',
             password: 'password1',
-            username: 'user2',
-            posts: []
-        })
-  await User.create(
+            posts: [],
+            username: 'tam'
+        },
         {
             email: 'saul@gmail.com',
             password: 'password2',
-            username: 'user3',
-            posts: []
+            posts: [],
+            username: 'saul'
         }
-  )
+    ])
+    console.log(cities)
+    console.log(users[1])
+    console.log('users seeded')
+    await Post.deleteMany();
 
-  console.log('users seeded')
-await Post.deleteMany();
+    const posts = await Post.insertMany([
+        {
+            city: cities[1],
+            username: users[0].username,
+            title: 'Test 1',
+            postText: 'This is a new post text',
+            replies: []
+        },
+        {
+            city: cities[0],
+            username: users[0].username,
+            title: 'Test 2',
+            postText: 'This is a secondary post text',
+            replies: []
+        }
+    ])
 
-const posts = await Post.create ([
-    {title: 'A Good Place to get Burgers',postText: 'This spot at ___ has great Burgers! 11/10!',username: 'user1', replies: [{replyBody: 'Really? Ill check it out.', username: 'user2'}]},
-    {title: 'Cool Farmers Market',postText: 'Over here there is an amazing Farmers Market!',username: 'user2', replies: [{replyBody: 'Really? Ill check it out.', username: 'user3'},{replyBody: 'Its a fine place, but I can think of a better place', username: 'user1'}]}
-
-])
-    console.log('posts seeded')
-  
+    console.log(posts[1])
+   console.log('posts seeded')
 
     process.exit();
 })
