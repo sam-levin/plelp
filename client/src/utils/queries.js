@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const QUERY_POST = gql`
   query post($id: ID!) {
@@ -22,7 +22,7 @@ export const QUERY_POST = gql`
 export const QUERY_POSTS = gql`
   query allPosts($city: String!) {
     city(name: $city) {
-      post{
+      post {
         postText
         createdAt
         replyCount
@@ -30,7 +30,7 @@ export const QUERY_POSTS = gql`
       }
     }
   }
-`
+`;
 
 export const QUERY_USER = gql`
   query user($username: String!) {
@@ -57,10 +57,10 @@ export const QUERY_LOCATIONS = gql`
   query locations($city: String!) {
     location(city: $city) {
       content
-      post{
+      post {
         title
         username
       }
     }
   }
-`
+`;

@@ -1,7 +1,11 @@
+import { useMutation } from "@apollo/client";
 import React, { useState } from "react";
+import { LOGIN_USER } from "../utils/mutations";
+import Auth from "../utils/auth";
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: "", password: "" });
+  const [login, { error }] = useMutation(LOGIN_USER);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -14,8 +18,24 @@ const Login = (props) => {
   };
 
   //submit form
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
+
+    try {
+      const { data } = await login({
+        variables: { ...formState },
+      });
+
+      Auth.login(data.login.token);
+    } catch (e) {
+      console.error(e);
+    }
+
+    // clear form values
+    setFormState({
+      email: "",
+      password: "",
+    });
   };
 
   return (
@@ -23,13 +43,13 @@ const Login = (props) => {
       <h1>Log In</h1>
       <form onSubmit={handleFormSubmit}>
         <div className="form-group">
-          <label for="username">Username</label>
+          <label for="email">Email</label>
           <input
             className="form-control"
-            placeholder="Your username"
-            name="username"
-            type="username"
-            id="username"
+            placeholder="Your email"
+            name="email"
+            type="email"
+            id="email"
             value={formState.email}
             onChange={handleChange}
           />

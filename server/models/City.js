@@ -1,24 +1,25 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
 
-const citySchema = new Schema (
+const citySchema = new Schema({
+  name: {
+    type: String,
+  },
+  posts: [
     {
-        name: {
-            type:String   
-        },
-        posts: [{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Post'}],
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Post",
+    },
+  ],
 
-        locations: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Location'
-            }
-        ]
-    }
-)
-const City = model('City', citySchema);
+  locations: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Location",
+    },
+  ],
+});
+const City = model("City", citySchema);
 
 module.exports = City;

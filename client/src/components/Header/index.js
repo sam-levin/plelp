@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
 
 const Header = () => {
-  const logout = (event) => {};
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
 
   return (
     <header>
@@ -18,6 +21,9 @@ const Header = () => {
             <Link to="/">
               <a>Cities</a>
             </Link>
+            <a href="/" onClick={logout}>
+              Log out
+            </a>
           </>
         ) : (
           <>

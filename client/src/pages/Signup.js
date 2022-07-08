@@ -1,12 +1,17 @@
 import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { ADD_USER } from "../utils/mutations";
 
 import Auth from "../utils/auth";
 
 const Signup = () => {
   const [formState, setFormState] = useState({
     username: "",
+    email: "",
     password: "",
   });
+
+  const [addUser, { error }] = useMutation(ADD_USER);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -18,11 +23,27 @@ const Signup = () => {
     });
   };
 
+  // submit form
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      console.log(formState);
+      const { data } = await addUser({
+        variables: { ...formState },
+      });
+
+      Auth.login(data.addUser.token);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return (
     <main>
       <div>
         <h1>Sign Up</h1>
-        <form>
+        <form onSubmit={handleFormSubmit}>
           <div className="form-group">
             <label for="username">Username</label>
             <input
@@ -32,6 +53,18 @@ const Signup = () => {
               type="username"
               id="username"
               value={formState.username}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label for="email">Email</label>
+            <input
+              className="form-control"
+              placeholder="********"
+              name="email"
+              type="email"
+              id="email"
+              value={formState.email}
               onChange={handleChange}
             />
           </div>
@@ -47,10 +80,12 @@ const Signup = () => {
               onChange={handleChange}
             />
           </div>
-          <button type="submit" class="btn btn-primary">
+          <button type="submit" className="btn btn-primary">
             Sign Up
           </button>
         </form>
+
+        {error && <div>Signup failed</div>}
       </div>
     </main>
   );
