@@ -1,6 +1,7 @@
 const { Schema, model } = require("mongoose");
 const mongoose = require("mongoose");
 const replySchema = require("./Reply");
+const { User } = require("./User");
 
 const postSchema = new Schema(
   {
@@ -12,8 +13,8 @@ const postSchema = new Schema(
     },
 
     username: {
-      type: String,
-      required: true,
+      type: Schema.Types.String,
+      ref: "User",
     },
 
     title: {
@@ -26,6 +27,18 @@ const postSchema = new Schema(
       default: Date.now,
       get: (createdAtVal) =>
         moment(createdAtVal).format("MMM DD, YYYY [at] hh:mm a"),
+    },
+
+    replies: [replySchema],
+
+    city: {
+      type: Schema.Types.ObjectId,
+      ref: "City",
+    },
+
+    location: {
+      type: Schema.Types.ObjectId,
+      ref: "Location",
     },
 
     replies: [replySchema],
