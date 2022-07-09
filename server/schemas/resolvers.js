@@ -4,6 +4,7 @@ const City = require('../models/City')
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
+
 const resolvers = {
     Query: {
       me: async (parent, args, context) => {
@@ -32,35 +33,18 @@ const resolvers = {
           .populate('posts');
       },
       
-      allPosts: async (parents, {city}) => {
-        const params = city ? {city} : {};
-        return Post.find(params).sort({createdAt: -1})
-        .populate('city');
-      },
-
-      // finding posts by username
       posts: async (parent, { username }) => {
         const params = username ? { username } : {};
-        return Post.find(params).sort({ createdAt: -1 })
-          .populate('city');
+        return Post.find(params).sort({ createdAt: -1 });
       },
 
-      postByCity: async (parent, {cityName }) => {
-        const params = cityName ? {cityName} : {};
-        return Post.find(params).sort({ createdAt: -1})
-      },
-
-      // finding post information by id
       post: async (parent, { _id }) => {
-        return Post.findOne({ _id }) 
-        .populate('city');
-
+        return Post.findOne({ _id });
       },
 
-      // get all locations for a city
-      locations: async (parent, {city}) => {
-        const params =  city ? { city } : {}
-        return Location.find(params).sort({createdAt: -1 });
+      cityposts: async (parent, { cityname }) => {
+        const params = cityname ? { cityname } : {};
+        return Post.find(params).sort({ createdAt: -1 });
       },
 
       cities: async() => {
@@ -91,25 +75,34 @@ const resolvers = {
         const token = signToken(user);
         return { token, user };
       },
-      addPost: async (parent, args, context) => {
+      addPost: async (parent, {postText , title , cityId} , context) => {
           if (context.user) {
-              const post = await Post.create({ ...args, username: context.user.username });
+              const post = await Post.create({ ... {postText , title , cityId} , username: context.user.username });
   
               await User.findByIdAndUpdate(
                   { _id: context.user._id },
                   { $push: { posts: post._id } },
                   { new: true }
                 );
-        
+
+                await City.findByIdAndUpdate(
+                  { _id: cityId },
+                  { $push: { posts: post._id } },
+                  { new: true}
+                )
+               
+          
+               
+      
                 return post;
           }
           throw new AuthenticationError('You need to be logged in!');
   
       },
-      addReply: async (parent, { descriptionId, replyBody }, context) => {
+      addReply: async (parent, { postId, replyBody }, context) => {
           if (context.user) {
             const updatedPost = await Post.findOneAndUpdate(
-              { _id: descriptionId },
+              { _id: postId },
               { $push: { replies: { replyBody, username: context.user.username } } },
               { new: true, runValidators: true }
             );
@@ -122,6 +115,5 @@ const resolvers = {
   }
 
 };
- 
 
 module.exports = resolvers;
