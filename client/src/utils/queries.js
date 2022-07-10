@@ -1,4 +1,12 @@
 import { gql } from '@apollo/client';
+export const QUERY_ALL_CITIES = gql`
+query cities{
+  cities {
+    _id
+    cityname
+  }
+}
+`
 
 export const QUERY_POST = gql`
   query post($id: ID!) {

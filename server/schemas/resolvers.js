@@ -50,6 +50,7 @@ const resolvers = {
       cities: async() => {
         return City.find()
           .select('-__v')
+          .populate('posts')
       }
     },
     Mutation: {
@@ -75,9 +76,9 @@ const resolvers = {
         const token = signToken(user);
         return { token, user };
       },
-      addPost: async (parent, {postText , title , cityId} , context) => {
+      addPost: async (parent, {postText , title , location, cityId} , context) => {
           if (context.user) {
-              const post = await Post.create({ ... {postText , title , cityId} , username: context.user.username });
+              const post = await Post.create({ ... {postText , title , location, cityId} , username: context.user.username });
   
               await User.findByIdAndUpdate(
                   { _id: context.user._id },

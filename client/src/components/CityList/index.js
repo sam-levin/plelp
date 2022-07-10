@@ -14,7 +14,6 @@ const CityList = ({ cities }) => {
             <div class="card-body">
               <h5 class="card-title">{city.name}</h5>
               <h6 class="card-subtitle mb-2 text-muted">{`${city.posts.length} Posts`}</h6>
-              <p class="card-text">{`${city.locations.length} Locations`}</p>
               <a href="#" class="card-link">
                 View Posts
               </a>

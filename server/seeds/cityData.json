@@ -1,6 +1,9 @@
 [
 {  "cityname": "Seattle",
-    "posts":[]
+    "posts":
+    [
+        
+    ]
 },
 {  "cityname": "San Francisco",
     "posts":[]

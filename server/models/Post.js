@@ -23,7 +23,12 @@ const postSchema = new Schema ({
             default: Date.now,
             get: (createdAtVal) => moment(createdAtVal).format('MMM DD, YYYY [at] hh:mm a')
         },
+        location: {
+            type: String,
+            required: true
+        },
         replies: [replySchema],
+
         city: [City.schema]
         
     },
