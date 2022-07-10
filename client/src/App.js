@@ -49,7 +49,6 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="signup" element={<Signup />} />
               <Route path="/city">
-                <Route path="/Sacramento" element={<City/>}/>
               </Route>
             </Routes>
           </div>
