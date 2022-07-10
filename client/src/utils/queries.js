@@ -1,10 +1,9 @@
 import { gql } from "@apollo/client";
-
-export const QUERY_CITIES = gql`
+export const QUERY_ALL_CITIES = gql`
   query cities {
     cities {
       _id
-      name
+      cityname
     }
   }
 `;
@@ -28,14 +27,24 @@ export const QUERY_POST = gql`
 `;
 
 // this gets all posts from a city
+// export const QUERY_POSTS = gql`
+//   query allPosts($city: String!) {
+//     city(cityName: $cityName) {
+//       posts{
+//         postText
+//         createdAt
+//         replyCount
+//         username
+//       }
+//     }
+//   }
+// `;
+
 export const QUERY_POSTS = gql`
-  query allPosts($city: String!) {
-    city(name: $city) {
+  query allPosts($cityName: String!) {
+    city(cityName: $cityName) {
       post {
-        postText
-        createdAt
-        replyCount
-        username
+        _id
       }
     }
   }

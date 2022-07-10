@@ -1,0 +1,21 @@
+[
+{  "cityname": "Seattle",
+    "posts":
+    [
+        
+    ]
+},
+{  "cityname": "San Francisco",
+    "posts":[]
+},
+{  "cityname": "Oakland",
+    "posts":[]
+},
+{  "cityname": "Memphis",
+    "posts":[]
+},
+{  "cityname": "New York",
+    "posts":[]
+}
+
+]

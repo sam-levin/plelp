@@ -5,17 +5,17 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
-    password: String
     posts: [Post]
   }
   type Post {
     _id: ID
-    city: City
     postText: String
     createdAt: String
     username: String
     replyCount: Int
+    location: String
     replies: [Reply]
+    city: [City]
   }
   type Reply {
     _id: ID
@@ -25,8 +25,8 @@ const typeDefs = gql`
   }
   type City {
     _id: ID
+    cityname: String
     posts: [Post]
-    name: String
   }
   type Auth {
     token: ID!
@@ -38,17 +38,20 @@ const typeDefs = gql`
     user(username: String!): User
     posts(username: String): [Post]
     post(_id: ID!): Post
-    allPosts: [Post]
+    cityposts(cityName: String!): [Post]
     cities: [City]
-    city(name: String!): City
-    locations: String!
   }
-
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addPost(postText: String!): Post
+    addPost(
+      postText: String!
+      title: String!
+      location: String!
+      cityId: ID!
+    ): Post
     addReply(postId: ID!, replyBody: String!): Post
+    addCity(cityname: String!): City
   }
 `;
 

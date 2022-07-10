@@ -10,21 +10,29 @@ import { QUERY_POSTS } from '../utils/queries'
 //example city of San Francisco
 //will use useefffect and setstate
 
+const posts = [
+  {}
+]
 
 const City = (props) => {
-    const { cityName: cityName } = useParams()
-    const { loading, data } = useQuery(QUERY_POSTS, { variables: {name: cityName}});
-    const posts = data?.post
+    //const { cityName: cityParam } = useParams()
+    const { loading, data } = useQuery(QUERY_POSTS
+      , { variables: {cityName: "Sacramento"}}
+      );
+    //const posts = data?.post
 
     if (loading) {
         return (
             <div>Loading...</div>
         )
     }
+    console.log(data)
     return (
         <div>
-          <h3>{}</h3>
-          
+          <h3>
+            
+          </h3>
+          pee
         </div>
       );
 };

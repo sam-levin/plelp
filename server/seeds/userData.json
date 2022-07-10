@@ -1,0 +1,39 @@
+[
+
+    { 
+        "username" : "Saul48", 
+        "email" : "Saul48@test.com", 
+        "password" : "Saul12345", 
+        "posts" : [] 
+    },
+    { 
+        "username" : "Sam85", 
+        "email" : "Sam850@test.com", 
+        "password" : "Sam12345", 
+        "posts" : [] 
+    },
+    { 
+        "username" : "Tammam61", 
+        "email" : "Tammam61@test.com", 
+        "password" : "Tammam12345", 
+        "posts" : [] 
+    },
+    { 
+        "username" : "Elton_H", 
+        "email" : "Elton_Heaney.Kemmer6@yahoo.com", 
+        "password" : "3dVgRgSQmrGLaQE", 
+        "posts" : [] 
+    },
+    { 
+        "username" : "Joshua12", 
+        "email" : "Josue6785@yahoo.com", 
+        "password" : "BNsmR75BHDH4na3", 
+        "posts" : [] 
+    },
+    { 
+        "username" : "Colt98", 
+        "email" : "Jaron98_Will72@hotmail.com", 
+        "password" : "vNVT_y10PBpVaUV", 
+        "posts" : [] 
+    }
+]

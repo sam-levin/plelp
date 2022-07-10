@@ -1,11 +1,11 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import { QUERY_CITIES } from "../utils/queries";
+import { QUERY_ALL_CITIES } from "../utils/queries";
 
 import CityList from "../components/CityList";
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_CITIES);
+  const { loading, data } = useQuery(QUERY_ALL_CITIES);
 
   const cities = data?.cities || [];
 
