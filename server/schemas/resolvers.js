@@ -42,14 +42,16 @@ const resolvers = {
         return Post.findOne({ _id });
       },
 
-      cityposts: async (parent, { cityname }) => {
-        const params = cityname ? { cityname } : {};
-        return Post.find(params).sort({ createdAt: -1 });
+      city: async (parent, { cityId }) => {
+        const params =  cityId ? {  cityId } : {};
+        return City.findOne(params)
+        .populate('posts');
       },
 
       cities: async() => {
         return City.find()
           .select('-__v')
+          .populate('posts')
       }
     },
     Mutation: {
@@ -77,24 +79,23 @@ const resolvers = {
       },
       addPost: async (parent, {postText , title , cityId} , context) => {
           if (context.user) {
-              const post = await Post.create({ ... {postText , title , cityId} , username: context.user.username });
-  
-              await User.findByIdAndUpdate(
-                  { _id: context.user._id },
-                  { $push: { posts: post._id } },
-                  { new: true }
-                );
+            const post = await Post.create(
+              { ... {postText , title , cityId} , username: context.user.username }
+              );
 
-                await City.findByIdAndUpdate(
-                  { _id: cityId },
-                  { $push: { posts: post._id } },
-                  { new: true}
-                )
-               
-          
-               
-      
-                return post;
+            await User.findByIdAndUpdate(
+                { _id: context.user._id },
+                { $push: { posts: post._id } },
+                { new: true }
+            );
+
+            await City.findByIdAndUpdate(
+                { _id: cityId },
+                { $push: { posts: post._id } },
+                { new: true}
+            )
+
+            return post;
           }
           throw new AuthenticationError('You need to be logged in!');
   

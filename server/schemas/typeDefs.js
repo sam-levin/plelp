@@ -11,6 +11,7 @@ const typeDefs = gql`
 
   type Post {
     _id: ID
+    title: String
     postText: String
     createdAt: String
     username: String
@@ -44,7 +45,7 @@ const typeDefs = gql`
     user(username: String!): User
     posts(username: String): [Post]
     post(_id: ID!): Post
-    cityposts (cityName: String!): [Post]
+    city (cityId: ID!): City
     cities: [City]
   }
 
