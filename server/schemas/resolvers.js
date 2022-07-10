@@ -31,9 +31,10 @@ const resolvers = {
     post: async (parent, { _id }) => {
       return Post.findOne({ _id });
     },
-    cityposts: async (parent, { cityname }) => {
-      const params = cityname ? { cityname } : {};
-      return Post.find(params).sort({ createdAt: -1 });
+    city: async (parent, { cityId }) => {
+      const params = cityId ? { cityId } : {};
+      return City.find(params)
+      .populate('posts')
     },
     cities: async () => {
       return City.find().select("-__v").populate("posts");

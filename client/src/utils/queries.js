@@ -1,12 +1,4 @@
 import { gql } from "@apollo/client";
-export const QUERY_ALL_CITIES = gql`
-  query cities {
-    cities {
-      _id
-      cityname
-    }
-  }
-`;
 
 export const QUERY_POST = gql`
   query post($id: ID!) {
@@ -26,6 +18,15 @@ export const QUERY_POST = gql`
   }
 `;
 
+export const QUERY_ALL_CITIES = gql`
+  query cities {
+    cities {
+      _id
+      cityname
+    }
+  }
+`;
+
 // this gets all posts from a city
 // export const QUERY_POSTS = gql`
 //   query allPosts($city: String!) {
@@ -40,11 +41,15 @@ export const QUERY_POST = gql`
 //   }
 // `;
 
-export const QUERY_POSTS = gql`
-  query allPosts($cityName: String!) {
-    city(cityName: $cityName) {
-      post {
+export const QUERY_CITY = gql`
+  query city($cityId: ID!) {
+    city(_id: $cityID) {
+      city {
         _id
+        posts{
+          _id
+          title
+        }
       }
     }
   }
