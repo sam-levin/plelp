@@ -1,4 +1,4 @@
-const { User, Post } = require("../models");
+const { User, Post, City, Location, Reply } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 
@@ -51,7 +51,7 @@ const resolvers = {
     },
 
     cities: async () => {
-      return City.find().select("-__v");
+      return City.find().select("-__v").populate("posts");
     },
   },
   Mutation: {

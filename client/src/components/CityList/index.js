@@ -10,12 +10,10 @@ const CityList = ({ cities }) => {
       <h2>Cities</h2>
       {cities &&
         cities.map((city) => (
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">{city.name}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">{`${city.posts.length} Posts`}</h6>
-              <p class="card-text">{`${city.locations.length} Locations`}</p>
-              <a href="#" class="card-link">
+          <div className="card">
+            <div className="card-body">
+              <h5 className="card-title">{city.name}</h5>
+              <a href="#" className="card-link">
                 View Posts
               </a>
             </div>
