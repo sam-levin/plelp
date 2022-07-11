@@ -6,7 +6,9 @@ export const QUERY_POST = gql`
       _id
       postText
       createdAt
+      title
       username
+      location
     }
   }
 `;

@@ -1,8 +1,10 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-
+import Auth from "../utils/auth";
 import { useQuery } from "@apollo/client";
 import { QUERY_CITY } from "../utils/queries";
+
+import PostForm from "../components/PostForm";
 
 import PostList from "../components/PostList";
 
@@ -14,6 +16,7 @@ const City = (props) => {
   });
 
   const city = data?.city || [];
+  const loggedIn = Auth.loggedIn();
 
   if (loading) {
     return <div>Loading...</div>;
@@ -25,7 +28,12 @@ const City = (props) => {
   return (
     <div>
       <h2>{city.cityName}</h2>
-      <PostList posts = {city.posts} />
+      {loggedIn && (
+        <div>
+          <PostForm cityId={city._id} />
+        </div>
+      )}
+      <PostList posts={city.posts} />
     </div>
   );
 };

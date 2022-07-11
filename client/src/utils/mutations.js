@@ -24,15 +24,17 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation addPost($postText: String!) {
-    addPost(postText: $postText) {
+  mutation addPost($postText: String!, $title: String!, $location: String!, $cityId: ID!) {
+    addPost(postText: $postText, title: $title, location: $location, cityId: $cityId) {
       _id
       postText
       username
       title
       createdAt
+      location
     }
   }
+
 `;
 
 // Reply mutation commented out for MVP

@@ -21,6 +21,7 @@ const SinglePost = (props) => {
 
   return (
     <div>
+       <h1 className="title">{post.title}</h1>
       <div className="card mb-3">
         <p className="card-header">
           <span style={{ fontWeight: 700 }} className="text-dark">
@@ -30,6 +31,7 @@ const SinglePost = (props) => {
         </p>
         <div className="card-body">
           <p>{post.postText}</p>
+          <p>{post.location}</p>
         </div>
       </div>
 
