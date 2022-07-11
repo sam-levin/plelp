@@ -1,68 +1,33 @@
-import React, { useEffect} from 'react'
-import {useQuery} from '@apollo/client'
-import { useParams } from 'react-router-dom';
-import { QUERY_POSTS } from '../utils/queries'
+import React from "react";
+import { useParams } from "react-router-dom";
 
-// 
-// prop that is the name of the city we are in
-// return function should query that city's posts (QUERY_POSTS) and return each of the posts information 
+import { useQuery } from "@apollo/client";
+import { QUERY_CITY } from "../utils/queries";
 
-//example city of San Francisco
-//will use useefffect and setstate
+import PostList from "../components/PostList";
 
-const posts = [
-  {}
-]
+const City = (props) => {
+  const { id: cityId } = useParams();
 
-// const City = (props) => {
-//     //const { cityName: cityParam } = useParams()
-//     const { loading, data } = useQuery(QUERY_POSTS
-//       , { variables: {cityName: "Sacramento"}}
-//       );
-//     //const posts = data?.post
+  const { loading, data } = useQuery(QUERY_CITY, {
+    variables: { id: cityId },
+  });
 
-//     if (loading) {
-//         return (
-//             <div>Loading...</div>
-//         )
-//     }
-//     console.log(data)
-//     return (
-//         <div>
-//           <h3>
-          
-//           </h3>
-//           pee
-//         </div>
-//       );
-// };
-    
+  const city = data?.city || [];
 
-// export default City
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-// {/* {posts &&
-//             posts.map(post => (
-//               <div key={post._id} className="card mb-3">
-//                 <p className="card-header">
-//                   <Link
-//                     to={`/profile/${post.username}`}
-//                     style={{ fontWeight: 700 }}
-//                     className="text-light"
-//                   >
-//                     {post.username}
-//                   </Link>{' '}
-//                   post on {post.createdAt}
-//                 </p>
-//                 <div className="card-body">
-//                   <Link to={`/post/${post._id}`}>
-//                     <p>{post.postText}</p>
-//                     <p className="mb-0">
-//                       Replies: {post.replyCount} || Click to{' '}
-//                       {post.replyCount ? 'see' : 'start'} the discussion!
-//                     </p>
-//                   </Link>
-//                 </div>
-//               </div> */}
-//             {/* ))} */}
+  console.log(city);
+  console.log(city.posts);
 
+  return (
+    <div>
+      <h2>{city.cityName}</h2>
+      <PostList posts = {city.posts} />
+    </div>
+  );
+};
 
+export default City;

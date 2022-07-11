@@ -31,18 +31,19 @@ const resolvers = {
     post: async (parent, { _id }) => {
       return Post.findOne({ _id });
     },
-
-
     city: async (parent, { _id }) => {
       const params = _id ? { _id } : {};
       return City.findOne(params)
       .populate('posts')
+     
     },
 
 
     cities: async () => {
-      return City.find().select("-__v").populate("posts");
+      return City.find().select("-__v")
+      .populate("posts");
     },
+  
   },
   Mutation: {
     addUser: async (parent, args) => {
@@ -82,19 +83,22 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    addReply: async (parent, { postId, replyBody }, context) => {
-      if (context.user) {
-        const updatedPost = await Post.findOneAndUpdate(
-          { _id: postId },
-          {
-            $push: { replies: { replyBody, username: context.user.username } },
-          },
-          { new: true, runValidators: true }
-        );
-        return updatedPost;
-      }
-      throw new AuthenticationError("You need to be logged in!");
-    },
+    
   },
 };
 module.exports = resolvers;
+
+
+// addReply: async (parent, { postId, replyBody }, context) => {
+//   if (context.user) {
+//     const updatedPost = await Post.findOneAndUpdate(
+//       { _id: postId },
+//       {
+//         $push: { replies: { replyBody, username: context.user.username } },
+//       },
+//       { new: true, runValidators: true }
+//     );
+//     return updatedPost;
+//   }
+//   throw new AuthenticationError("You need to be logged in!");
+// },

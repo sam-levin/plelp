@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const CityList = ({ cities }) => {
   if (!cities.length) {
@@ -12,10 +13,8 @@ const CityList = ({ cities }) => {
         cities.map((city) => (
           <div className="card">
             <div className="card-body">
-              <h5 className="card-title">{city.cityName}</h5>
-              <a href="#" className="card-link">
-                View Posts
-              </a>
+              <h4 className="card-title">{city.cityName}</h4>
+              <Link to={`/city/${city._id}`}>View Posts</Link>
             </div>
           </div>
         ))}

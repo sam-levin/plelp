@@ -30,16 +30,13 @@ export const ADD_POST = gql`
       postText
       username
       title
-      created_at
-      replyCount
-      replies {
-        _id
-      }
+      createdAt
     }
   }
 `;
 
-export const ADD_REPLY = gql`
+// Reply mutation commented out for MVP
+/*export const ADD_REPLY = gql`
   mutation addReply($descriptionId: ID!, $replyBody: String!) {
     addReply(descriptionId: $descriptionId, replyBody: $replyBody)
     _id
@@ -51,3 +48,4 @@ export const ADD_REPLY = gql`
     }
   }
 `;
+*/

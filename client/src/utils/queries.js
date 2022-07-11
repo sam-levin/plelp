@@ -7,13 +7,6 @@ export const QUERY_POST = gql`
       postText
       createdAt
       username
-      replyCount
-      replies {
-        _id
-        createdAt
-        username
-        replyBody
-      }
     }
   }
 `;
@@ -27,25 +20,12 @@ export const QUERY_ALL_CITIES = gql`
   }
 `;
 
-// this gets all posts from a city
-// export const QUERY_POSTS = gql`
-//   query allPosts($city: String!) {
-//     city(cityName: $cityName) {
-//       posts{
-//         postText
-//         createdAt
-//         replyCount
-//         username
-//       }
-//     }
-//   }
-// `;
-
 export const QUERY_CITY = gql`
-  query city($cityId: ID!) {
-    city(cityId: $cityID) {
+  query city($id: ID!) {
+    city(_id: $id) {
       _id
-      posts{
+      cityName
+      posts {
         _id
         title
       }
@@ -71,11 +51,6 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      friendCount
-      friends {
-        _id
-        username
-      }
       post {
         _id
         postText

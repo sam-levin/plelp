@@ -5,11 +5,11 @@ db.once("open", async () => {
   await City.deleteMany();
 
   const cities = await City.insertMany([
-    { name: "San Francisco" },
-    { name: "Sacramento" },
-    { name: "Seattle" },
-    { name: "New York" },
-    { name: "Santa Cruz" },
+    { cityName: "San Francisco" },
+    { cityName: "Sacramento" },
+    { cityName: "Seattle" },
+    { cityName: "New York" },
+    { cityName: "Santa Cruz" },
   ]);
 
   console.log("Cities seeded");

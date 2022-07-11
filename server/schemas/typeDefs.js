@@ -1,5 +1,6 @@
 const { gql } = require("apollo-server-express");
 
+// Because this is MVP, Reply type, mutation, and references removed for simplicity/ease of erorr checking 
 const typeDefs = gql`
   type User {
     _id: ID
@@ -15,14 +16,7 @@ const typeDefs = gql`
     username: String
     replyCount: Int
     location: String
-    replies: [Reply]
     city: [City]
-  }
-  type Reply {
-    _id: ID
-    replyBody: String
-    createdAt: String
-    username: String
   }
   type City {
     _id: ID
@@ -51,8 +45,7 @@ const typeDefs = gql`
       location: String!
       cityId: ID!
     ): Post
-    addReply(postId: ID!, replyBody: String!): Post
-    addCity(cityname: String!): City
+    addCity(cityName: String!): City
   }
 `;
 
