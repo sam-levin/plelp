@@ -57,11 +57,11 @@ export const QUERY_ALL_CITIES = gql`
 // `;
 
 export const QUERY_CITY = gql`
-  query city($cityId: ID!) {
-    city(_id: $cityID) {
+  query city($id: ID!) {
+    city(_id: $id) {
       city {
         _id
-        posts{
+        posts {
           _id
           title
         }

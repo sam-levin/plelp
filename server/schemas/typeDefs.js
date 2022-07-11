@@ -52,7 +52,7 @@ const typeDefs = gql`
       cityId: ID!
     ): Post
     addReply(postId: ID!, replyBody: String!): Post
-    addCity(cityname: String!): City
+    addCity(cityName: String!): City
   }
 `;
 
