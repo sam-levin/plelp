@@ -1,3 +1,16 @@
+:root {
+  --floralwhite: #FFF8F0;
+  --oxfordBlue: #030027;
+  --fuzzyRed: #c16e70;
+  --deepGreen: #214f4b;
+  --shadowBlue: #7a93ac;
+
+}
+
+*{
+  background-color: var(--floralwhite);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -10,4 +23,18 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+h2{
+  text-decoration: none;
+  color: var(--oxfordBlue);
+}
+
+a{
+  text-decoration: none;
+  color: #214f4b;
+}
+
+.temp {
+  background-color: var(--deepGreen);
+  color: aqua;
 }

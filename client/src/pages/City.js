@@ -7,6 +7,7 @@ import { QUERY_CITY } from "../utils/queries";
 import PostForm from "../components/PostForm";
 
 import PostList from "../components/PostList";
+import PostForm from "../components/PostForm";
 
 const City = (props) => {
   const { id: cityId } = useParams();
@@ -21,9 +22,6 @@ const City = (props) => {
   if (loading) {
     return <div>Loading...</div>;
   }
-
-  console.log(city);
-  console.log(city.posts);
 
   return (
     <div>

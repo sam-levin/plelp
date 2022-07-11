@@ -4,7 +4,6 @@ import { useMutation } from "@apollo/client";
 import { ADD_POST } from "../../utils/mutations";
 
 
-
 const PostForm = (props) => {
   const [formState, setFormState] = useState({
     title: "",

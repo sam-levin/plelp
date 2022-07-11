@@ -35,6 +35,18 @@ export const QUERY_CITY = gql`
   }
 `;
 
+// export const QUERY_CITY = gql`
+// query city($cityName: String!) {
+//   city( cityName: $cityName){
+//       _id
+//       cityName
+//       posts {
+//         _id
+//         title
+//       }
+//     }
+//   }`
+
 export const QUERY_USER = gql`
   query user($username: String!) {
     user(username: $username) {

@@ -26,7 +26,7 @@ const postSchema = new Schema(
       get: (createdAtVal) =>
         moment(createdAtVal).format("MMM DD, YYYY [at] hh:mm a"),
     },
-    // for MVP purposes this is a string - would ideally be a model on its own that that has id's and doesn't allow for duplicates
+    // for MVP purposes this is a string - would ideally be a model of its own that that has id's and doesn't allow for duplicates
     location: {
       type: String,
       required: true,
