@@ -39,7 +39,7 @@ const typeDefs = gql`
     user(username: String!): User
     posts(username: String): [Post]
     post(_id: ID!): Post
-    city (cityId: ID!): City
+    city(_id: ID!): City
     cities: [City]
   }
   type Mutation {
@@ -52,7 +52,7 @@ const typeDefs = gql`
       cityId: ID!
     ): Post
     addReply(postId: ID!, replyBody: String!): Post
-    addCity(cityname: String!): City
+    addCity(cityName: String!): City
   }
 `;
 
