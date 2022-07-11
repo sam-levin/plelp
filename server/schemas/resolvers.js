@@ -31,11 +31,15 @@ const resolvers = {
     post: async (parent, { _id }) => {
       return Post.findOne({ _id });
     },
-    city: async (parent, { cityId }) => {
-      const params = cityId ? { cityId } : {};
-      return City.find(params)
+
+
+    city: async (parent, { _id }) => {
+      const params = _id ? { _id } : {};
+      return City.findOne(params)
       .populate('posts')
     },
+
+
     cities: async () => {
       return City.find().select("-__v").populate("posts");
     },

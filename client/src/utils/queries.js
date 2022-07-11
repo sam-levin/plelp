@@ -43,17 +43,27 @@ export const QUERY_ALL_CITIES = gql`
 
 export const QUERY_CITY = gql`
   query city($cityId: ID!) {
-    city(_id: $cityID) {
-      city {
+    city(cityId: $cityID) {
+      _id
+      posts{
         _id
-        posts{
-          _id
-          title
-        }
+        title
       }
     }
   }
 `;
+
+// export const QUERY_CITY = gql`
+// query city($cityName: String!) {
+//   city( cityName: $cityName){
+//       _id
+//       cityName
+//       posts {
+//         _id
+//         title
+//       }
+//     }
+//   }`
 
 export const QUERY_USER = gql`
   query user($username: String!) {
