@@ -30,6 +30,7 @@ export const ADD_POST = gql`
       postText
       username
       title
+      createdAt
     }
   }
 `;
