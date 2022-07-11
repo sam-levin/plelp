@@ -31,6 +31,7 @@ const PostForm = (props) => {
       await addPost({
         variables: { ...formState },
       });
+      console.log('post successful')
     } catch (e) {
       console.error(e);
     }

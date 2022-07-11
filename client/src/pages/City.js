@@ -17,7 +17,7 @@ const City = (props) => {
 
   const city = data?.city || [];
   const loggedIn = Auth.loggedIn();
-
+  console.log (city)
   if (loading) {
     return <div>Loading...</div>;
   }
