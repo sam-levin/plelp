@@ -26,7 +26,7 @@ const typeDefs = gql`
   }
   type City {
     _id: ID
-    cityname: String
+    cityName: String
     posts: [Post]
   }
   type Auth {

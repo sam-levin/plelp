@@ -1,20 +1,20 @@
 [
-{  "cityname": "Seattle",
+{  "cityName": "Seattle",
     "posts":
     [
         
     ]
 },
-{  "cityname": "San Francisco",
+{  "cityName": "San Francisco",
     "posts":[]
 },
-{  "cityname": "Oakland",
+{  "cityName": "Oakland",
     "posts":[]
 },
-{  "cityname": "Memphis",
+{  "cityName": "Memphis",
     "posts":[]
 },
-{  "cityname": "New York",
+{  "cityName": "New York",
     "posts":[]
 }
 

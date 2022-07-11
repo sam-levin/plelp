@@ -12,7 +12,7 @@ const CityList = ({ cities }) => {
         cities.map((city) => (
           <div className="card">
             <div className="card-body">
-              <h5 className="card-title">{city.name}</h5>
+              <h5 className="card-title">{city.cityName}</h5>
               <a href="#" className="card-link">
                 View Posts
               </a>

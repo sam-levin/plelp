@@ -22,7 +22,7 @@ export const QUERY_ALL_CITIES = gql`
   query cities {
     cities {
       _id
-      cityname
+      cityName
     }
   }
 `;
