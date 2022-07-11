@@ -1,28 +1,30 @@
-const { Schema } = require("mongoose");
-const moment = require("moment");
+// We built this model so that in future iterations, replies could be added. 
 
-const replySchema = new Schema(
-  {
-    replyBody: {
-      type: String,
-    },
-    username: {
-      type: String,
-      required: true,
-    },
+// const { Schema } = require("mongoose");
+// const moment = require("moment");
 
-    createdAt: {
-      type: Date,
-      default: Date.now,
-      get: (createdAtVal) =>
-        moment(createdAtVal).format("MMM DD, YYYY [at] hh:mm a"),
-    },
-  },
-  {
-    toJSON: {
-      getters: true,
-    },
-  }
-);
+// const replySchema = new Schema(
+//   {
+//     replyBody: {
+//       type: String,
+//     },
+//     username: {
+//       type: String,
+//       required: true,
+//     },
 
-module.exports = replySchema;
+//     createdAt: {
+//       type: Date,
+//       default: Date.now,
+//       get: (createdAtVal) =>
+//         moment(createdAtVal).format("MMM DD, YYYY [at] hh:mm a"),
+//     },
+//   },
+//   {
+//     toJSON: {
+//       getters: true,
+//     },
+//   }
+// );
+
+// module.exports = replySchema;
