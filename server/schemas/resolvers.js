@@ -56,10 +56,13 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addPost: async (parent, { postText, title, location, cityId }, context) => {
+    addPost: async (parent, { title, postText, location, cityId }, context) => {
       if (context.user) {
         const post = await Post.create({
-          ...{ postText, title, location, cityId },
+          title: title,
+          postText: postText,
+          location: location,
+          cityId: cityId,
           username: context.user.username,
         });
         await User.findByIdAndUpdate(
