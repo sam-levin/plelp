@@ -11,28 +11,34 @@ const Header = () => {
 
   return (
     <header>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <Link to="/">
+      <nav className="navbar temp navbar-expand-lg container navbar-light bg-light">
+        <div className="row p-3 ">
+        <Link className='col-sm' to="/">
           <h1>Plelp</h1>
         </Link>
-
+        </div>
         {Auth.loggedIn() ? (
           <>
-            <Link to="/">
+          <div className="row p-2">
+            <Link className="p-2" to="/">
               <a>Cities</a>
             </Link>
             <a href="/" onClick={logout}>
               Log out
             </a>
+            </div>
           </>
+          
         ) : (
           <>
-            <Link to="/login">
+          <div className="row">
+            <Link className="col-sm p-2" to="/login">
               <p>Log In</p>
             </Link>
-            <Link to="/signup">
+            <Link className="col-sm p-2" to="/signup">
               <p>Sign Up</p>
             </Link>
+            </div>
           </>
         )}
       </nav>

@@ -3,6 +3,8 @@
   --oxfordBlue: #030027;
   --fuzzyRed: #c16e70;
   --deepGreen: #214f4b;
+  --shadowBlue: #7a93ac;
+
 }
 
 *{
@@ -29,5 +31,10 @@ h2{
 
 a{
   text-decoration: none;
+  color: #214f4b;
 }
 
+.temp {
+  background-color: var(--deepGreen);
+  color: aqua;
+}
