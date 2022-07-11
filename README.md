@@ -25,3 +25,7 @@ Currently there is no liscensing
 
 ## Deployed Apllication 
 Feel free to check out the app [here!](https://intense-beach-35555.herokuapp.com/)
+
+## Screenshot 
+
+![Screen Shot 2022-07-10 at 11 54 10 PM](https://user-images.githubusercontent.com/98499605/178209793-7f311b6e-b41a-4167-a6ea-b1302438224d.png)
