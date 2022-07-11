@@ -44,12 +44,11 @@ export const QUERY_ALL_CITIES = gql`
 export const QUERY_CITY = gql`
   query city($id: ID!) {
     city(_id: $id) {
-      city {
+      _id
+      cityName
+      posts {
         _id
-        posts {
-          _id
-          title
-        }
+        title
       }
     }
   }

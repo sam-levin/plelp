@@ -7,10 +7,10 @@ import { QUERY_CITY } from "../utils/queries";
 import PostList from "../components/PostList";
 
 const City = (props) => {
-  const { _id: cityId } = useParams();
+  const { id: cityId } = useParams();
 
   const { loading, data } = useQuery(QUERY_CITY, {
-    variables: { _id: cityId },
+    variables: { id: cityId },
   });
 
   const city = data?.city || [];
@@ -24,6 +24,7 @@ const City = (props) => {
   return (
     <div>
       <h2>{city.cityName}</h2>
+      <PostList posts={city.posts} />
     </div>
   );
 };
