@@ -1,17 +1,19 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React from "react";
+import { useParams } from "react-router-dom";
 
-import { useQuery } from '@apollo/client';
-import { QUERY_CITY_POST } from '../utils/queries';
+import { useQuery } from "@apollo/client";
+import { QUERY_POST } from "../utils/queries";
+
+import PostList from "../components/PostList";
 
 const SinglePost = (props) => {
-  const { id: cityId } = useParams();
+  const { id: postId } = useParams();
 
-  const { loading, data } = useQuery(QUERY_CITY_POST, {
-    variables: { id: cityId },
+  const { loading, data } = useQuery(QUERY_POST, {
+    variables: { id: postId },
   });
 
-  const city = data?.city || {};
+  const post = data?.post || {};
 
   if (loading) {
     return <div>Loading...</div>;
@@ -21,13 +23,13 @@ const SinglePost = (props) => {
     <div>
       <div className="card mb-3">
         <p className="card-header">
-          <span style={{ fontWeight: 700 }} className="text-light">
-            {city.username}
+          <span style={{ fontWeight: 700 }} className="text-dark">
+            {post.username}
           </span>{' '}
-          thought on {city.createdAt}
+          thought on {post.createdAt}
         </p>
         <div className="card-body">
-          <p>{city.postText}</p>
+          <p>{post.postText}</p>
         </div>
       </div>
 
