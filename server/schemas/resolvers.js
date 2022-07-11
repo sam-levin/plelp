@@ -81,19 +81,22 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    addReply: async (parent, { postId, replyBody }, context) => {
-      if (context.user) {
-        const updatedPost = await Post.findOneAndUpdate(
-          { _id: postId },
-          {
-            $push: { replies: { replyBody, username: context.user.username } },
-          },
-          { new: true, runValidators: true }
-        );
-        return updatedPost;
-      }
-      throw new AuthenticationError("You need to be logged in!");
-    },
+    
   },
 };
 module.exports = resolvers;
+
+
+// addReply: async (parent, { postId, replyBody }, context) => {
+//   if (context.user) {
+//     const updatedPost = await Post.findOneAndUpdate(
+//       { _id: postId },
+//       {
+//         $push: { replies: { replyBody, username: context.user.username } },
+//       },
+//       { new: true, runValidators: true }
+//     );
+//     return updatedPost;
+//   }
+//   throw new AuthenticationError("You need to be logged in!");
+// },

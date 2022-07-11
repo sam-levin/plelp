@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
-const replySchema = require("./Reply");
+// Replies were not feasible for the MVP
+// const replySchema = require("./Reply");
 const City = require("./City");
 const moment = require("moment");
 
@@ -25,11 +26,11 @@ const postSchema = new Schema(
       get: (createdAtVal) =>
         moment(createdAtVal).format("MMM DD, YYYY [at] hh:mm a"),
     },
+    // for MVP purposes this is a string - would ideally be a model on its own that that has id's and doesn't allow for duplicates
     location: {
       type: String,
       required: true,
     },
-    replies: [replySchema],
 
     city: [City.schema],
   },
@@ -42,9 +43,9 @@ const postSchema = new Schema(
   }
 );
 //Tracks reply count
-postSchema.virtual("replyCount").get(function () {
-  return this.replies.length;
-});
+// postSchema.virtual("replyCount").get(function () {
+//   return this.replies.length;
+// });
 
 const Post = model("Post", postSchema);
 
